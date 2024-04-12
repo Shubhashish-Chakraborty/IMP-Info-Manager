@@ -668,6 +668,231 @@ def OTHERACCOUNT():
             print("Invalid Input, Try Again!")
             break
 
+#Contactdetails_MANAGEMENT_PROGRAMandFUNCTIONS
+
+
+def CONTACTDETAILS():
+    print()
+    print('< Welcome to your CONTACT MANAGEMENT DATABASE >\n')
+
+
+    def insertContact():  
+
+
+        print('Kindly Insert Contact Details:')
+        print()
+
+        choice = 'y'
+        while (choice.lower() == 'y'):
+
+            sno = int(input('Enter Proper Serial Number:'))
+            cname = input('Enter Contact Name:')
+            cnumber = input(f"Enter Contact Number for {cname}:")
+            extra = input('Enter Some extra info you want to give:')
+
+            query = "insert into contactdetails(Sno,Contact_Name,Contact_Number,Extra_info) values({},'{}','{}','{}')".format(sno,cname,cnumber,extra)
+            
+            myCursor.execute(query)
+            myConnection.commit()
+
+            choice = input('Want to enter more Contacts(y/n):')
+            print()
+
+    def allContacts():
+
+        myCursor.execute("select * from contactdetails")
+        data = myCursor.fetchall()
+
+        for i in data:
+            print(i)
+            print()
+
+    
+    def UpdateContactNumber():
+
+        
+        
+        
+        myCursor.execute("select * from contactdetails")
+        data = myCursor.fetchall()
+
+        for j in data:
+
+            print(j)
+            print()
+        print()
+
+
+        print('< Please select the Contact of which you are updating the Number >')
+        print()
+
+        
+
+        askSno = int(input('Enter the Sno:'))
+        
+        newNumber = input('Enter the new Contact Number:')
+
+        
+        query = "update contactdetails set Contact_Number = '{}' where Sno = {}".format(newNumber,askSno)
+
+        myCursor.execute(query)
+        myConnection.commit()
+
+        print()
+
+
+    def removeContact():
+
+        myCursor.execute("select * from contactdetails")
+        data = myCursor.fetchall()
+        for a in data:
+            print(a)
+            print()
+
+
+        print()
+        print("Please select the Contact which you want to delete:")
+        print()
+
+
+        sno = int(input('Enter Sno:'))
+
+        query = "DELETE FROM contactdetails WHERE Sno = {}".format(sno)
+        myCursor.execute(query)
+        myConnection.commit()
+    
+
+        print('Data Removed!')
+        print()
+
+    
+    def updateExtra_Contact():
+
+
+        print()
+        askSnoforExtra = int(input("Enter the Contact's Sno for which you want to give some extra Information:"))
+
+
+
+        print()
+        print("< Give some Extra Information you want to give for the respective Contact >")
+        print()
+
+
+        askInfo = input('Write Here:')
+
+        query = "update contactdetails set Extra_info = '{}' where Sno = {}".format(askInfo,askSnoforExtra)
+
+        myCursor.execute(query)
+        myConnection.commit()
+    
+
+    def searchContacts():
+
+        print()
+        searchInput = input('TYPE CONTACT NAME:')
+        print()
+
+        query = "select * from contactdetails where Contact_Name like '{}%'".format(searchInput)
+
+        myCursor.execute(query)
+        data = myCursor.fetchall()
+
+
+        print("Sno , Contact_Name , Contact_Number , ExtraInfo")
+
+        for i in data:
+
+            print(i)
+            print()
+
+
+    
+    def selfQuery():
+
+        print()
+        print("< WRITE YOUR OWN QUERY >")
+
+
+        askQuery = input('Enter your Query:')
+
+        query = askQuery
+
+        myCursor.execute(query)
+        data = myCursor.fetchall()
+
+        for i in data:
+
+            print(i)
+
+
+
+
+
+    #MenuDrive_FOR_CONTACTDETAILS_
+                
+            
+    while True:
+        print()
+    
+        optionsLST = ['1-> Insert Contact Detail' , '2-> Show complete Contacts' , '3-> Update Contact Number' , '4-> Remove Contact' , '5-> Give Some Extra Info for the respective Contact' , '6-> Search Contacts', '7-> Write Your Query' , '8-> Exit']
+
+        for options in optionsLST:
+            print(options)
+
+        print()
+        gmailaccChoice = input('YOUR CHOICE:')
+        print()
+
+        if (gmailaccChoice.isdigit()):
+
+            if (int(gmailaccChoice) == 1):
+
+                insertContact()
+            
+            elif (int(gmailaccChoice) == 2):
+
+                print("Sno , GmailAccount , Password , ExtraInfo")
+
+                allContacts()
+
+            elif (int(gmailaccChoice) == 3):
+
+                UpdateContactNumber()
+
+
+            elif (int(gmailaccChoice) == 4):
+
+                removeContact()
+
+
+            elif (int(gmailaccChoice) == 5):
+
+                updateExtra_Contact()
+
+
+            elif (int(gmailaccChoice) == 6):
+                searchContacts()
+
+
+            elif (int(gmailaccChoice) == 7):
+
+                selfQuery()
+
+
+            elif (int(gmailaccChoice) == 8): #exit
+                
+                os.system('cls')
+                break
+                
+        
+        else:
+
+            print("Invalid Input, Try Again!")
+            break
+
+
+
 
 
 #MAIN_MENU_DRIVE
@@ -678,7 +903,7 @@ while True:
 
     print()
 
-    optionsLST = ['1-> GMAIL_ACCOUNT' , '2-> SOCIAL_MEDIA_ACCOUNT' , '3-> OTHER_ACCOUNTS', '4-> EXIT']
+    optionsLST = ['1-> GMAIL_ACCOUNT' , '2-> SOCIAL_MEDIA_ACCOUNT' , '3-> OTHER_ACCOUNTS', '4-> CONTACT_DETAILS' , '5-> EXIT']
 
     for options in optionsLST:
         print(options)
@@ -702,7 +927,12 @@ while True:
 
             OTHERACCOUNT()
 
-        elif (int(tableChoice) == 4): #exit
+        elif (int(tableChoice) == 4):
+
+            CONTACTDETAILS()
+
+
+        elif (int(tableChoice) == 5): #exit
 
             print()
             print('Program Closed Successfully!')

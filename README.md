@@ -30,3 +30,5 @@ Then Create the required tables which is being mentioned below: <br>
 <a href="https://drive.google.com/file/d/1QorJxs9uPhfOU4lb8liR-Kpylo2tAtmb/view?usp=drive_link" target="_blank">Code for socialmediaacc</a>
 
 <a href="https://drive.google.com/file/d/1SS7fJsvObul1Mnm_9nwSvxdLjebpGrsH/view?usp=drive_link" target="_blank">Code for otheracc</a>
+
+<a href="https://drive.google.com/file/d/1jl-0K0XnAC75tFXfOVI-qjRBts0s5vA1/view?usp=sharing" target="_blank">Code for contactdetails</a>
