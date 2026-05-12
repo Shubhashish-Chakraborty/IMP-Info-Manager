@@ -16,19 +16,51 @@ HOW TO USE and ACCESS THE PROJECT: <br>
 
 First of all create a database on your system named -> important_shubhdata (OR ANYTHING AS YOU WISH)<br>
 
-BUT MAKE SURE while performing connection, mention your DATABASE EXACT NAME (WATCH IN LINE 25) <br>
+BUT MAKE SURE while performing connection, mention your DATABASE EXACT NAME <br>
+in here:
 
+```python
+myConnection = mysqlconnector.connect(host='localhost',user='root',passwd=MYpasswd database='<your-database>')
+```
 
 Then Create the required tables which is being mentioned below: <br>
 
 
 # Copy the MySQL code from the below provided links to create the necessary tables.
 
-
-<a href="https://drive.google.com/file/d/1WSplabRvW63c35D0NzYHvvz08EM4aTrx/view?usp=drive_link" target="_blank">Code for gmailacc</a>
-
-<a href="https://drive.google.com/file/d/1QorJxs9uPhfOU4lb8liR-Kpylo2tAtmb/view?usp=drive_link" target="_blank">Code for socialmediaacc</a>
-
-<a href="https://drive.google.com/file/d/1SS7fJsvObul1Mnm_9nwSvxdLjebpGrsH/view?usp=drive_link" target="_blank">Code for otheracc</a>
-
-<a href="https://drive.google.com/file/d/1jl-0K0XnAC75tFXfOVI-qjRBts0s5vA1/view?usp=sharing" target="_blank">Code for contactdetails</a>
+sql query for gmailacc:
+```bash
+create table gmailacc(
+    Sno integer(3) primary key,
+    Gmail_Account varchar(50) not null,
+    Password varchar(80),
+    Extra_info varchar(80)
+);
+```
+sql query for socialmediaacc:
+```bash
+create table socialmediaacc(
+    Sno integer(3) primary key,
+    Social_Account varchar(50) not null,
+    Password varchar(80),
+Extra_info varchar(80)
+);
+```
+sql query for otheracc:
+```bash
+create table otheracc(
+    Sno integer(3) primary key,
+    Account_Name varchar(80) not null,
+    Password varchar(80),
+    Extra_info varchar(80)
+);
+```
+sql query for contactdetails:
+```bash
+create table contactdetails(
+    Sno integer(3) primary key,
+    Contact_Name varchar(50) not null,
+    Contact_Number varchar(80),
+    Extra_info varchar(80)
+);
+```
